@@ -1,0 +1,65 @@
+{
+    "states":[
+      {
+        "name":"StartScreen",
+        "output":"Select an operation:\n1 - Schedule Appointment\n2 - Quit\n",
+        "transitions":[
+          {
+            "with":"1",
+            "to":"EnterDate"
+          },
+          {
+            "with":"2",
+            "to":"ClosingScreen"
+          }
+        ]
+      },
+      {
+        "name":"EnterDate",
+        "output":"Enter a date to schedule your appointment:\n",
+        "transitions":[
+          {
+            "with":"available",
+            "to":"Scheduled"
+          },
+          {
+            "with":"unavailable",
+            "to":"UnavailableDate"
+          }
+        ]
+      },
+      {
+        "name":"UnavailableDate",
+        "output":"The date you entered is unavailable.\nSelect an operation:\n1 - Try another date\n2 - Quit\n",
+        "transitions":[
+          {
+            "with":"1",
+            "to":"EnterDate"
+          },
+          {
+            "with":"2",
+            "to":"ClosingScreen"
+          }
+        ]
+      },
+      {
+        "name":"Scheduled",
+        "output":"Your appointment was scheduled successfully.\nSelect an operation:\n1 - Schedule another appointment\n2 - Quit\n",
+        "transitions":[
+          {
+            "with":"1",
+            "to":"StartScreen"
+          },
+          {
+            "with":"2",
+            "to":"ClosingScreen"
+          }
+        ]
+      },
+      {
+        "name":"ClosingScreen",
+        "output":"Thanks for your contact!\n",
+        "transitions":[]
+      }
+    ]
+  }
